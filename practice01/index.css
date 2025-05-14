@@ -557,7 +557,47 @@ button {
 
 /* Media Queries */
 
-/* Small devices (tablets, 576px and up) */
+/* Media Queries */
+
+/* ==================== MÓVILES ==================== */
+/* Móviles pequeños (hasta 360px) */
+@media (max-width: 360px) {
+    .hero__title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero__subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    .section-header__title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .feature-card__icon {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* Móviles medianos (361px - 480px) */
+@media (min-width: 361px) and (max-width: 480px) {
+    .hero__actions {
+        flex-direction: column;
+        gap: var(--spacing-3);
+    }
+}
+
+/* Móviles grandes (481px - 575px) */
+@media (min-width: 481px) and (max-width: 575px) {
+    .hero__actions {
+        flex-direction: column;
+        gap: var(--spacing-4);
+    }
+}
+
+/* ==================== TABLETS ==================== */
+/* Tablets pequeñas y móviles en horizontal (576px - 767px) */
 @media (min-width: 576px) {
     .hero__actions {
         flex-direction: row;
@@ -568,7 +608,7 @@ button {
     }
 }
 
-/* Medium devices (tablets, 768px and up) */
+/* Tablets iPad (768px - 834px) - Común para iPad clásico, iPad Air */
 @media (min-width: 768px) {
     .hero__title {
         font-size: var(--font-size-5xl);
@@ -603,7 +643,20 @@ button {
     }
 }
 
-/* Large devices (desktops, 992px and up) */
+/* Tablets grandes (835px - 991px) - iPad Pro, Android tablets grandes */
+@media (min-width: 835px) and (max-width: 991px) {
+    .hero__title {
+        font-size: var(--font-size-5xl);
+    }
+    
+    .features__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-6);
+    }
+}
+
+/* ==================== LAPTOPS Y ESCRITORIOS ==================== */
+/* Laptops y monitores pequeños (992px - 1199px) - 1366x768, etc. */
 @media (min-width: 992px) {
     .header__actions {
         display: flex;
@@ -660,7 +713,7 @@ button {
     }
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
+/* Laptops y monitores Full HD (1200px - 1439px) - 1920x1080 */
 @media (min-width: 1200px) {
     .container {
         padding: 0 var(--spacing-8);
@@ -673,9 +726,112 @@ button {
     .hero__title {
         font-size: var(--font-size-5xl);
     }
+    
+    .section-header__title {
+        font-size: var(--font-size-4xl);
+    }
 }
 
-/* Print styles */
+/* Laptops de alta resolución, monitores QHD (1440px - 1919px) - 2560x1440 */
+@media (min-width: 1440px) {
+    :root {
+        --font-size-base: 1.05rem;
+    }
+    
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero__inner {
+        gap: var(--spacing-12);
+    }
+    
+    .features__grid,
+    .testimonials__grid {
+        gap: var(--spacing-10);
+    }
+}
+
+/* ==================== PANTALLAS GRANDES ==================== */
+/* Monitores grandes UHD/4K (1920px y superior) */
+@media (min-width: 1920px) {
+    :root {
+        --font-size-base: 1.1rem;
+        --spacing-12: 3.5rem;
+        --spacing-16: 5rem;
+        --spacing-20: 6rem;
+    }
+    
+    .container {
+        max-width: 1800px;
+    }
+    
+    .hero {
+        padding: var(--spacing-20) 0;
+    }
+    
+    .hero__title {
+        font-size: calc(var(--font-size-5xl) * 1.2);
+    }
+    
+    .features__grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+/* ==================== MONITORES ULTRAWIDE ==================== */
+/* Monitores UltraWide (21:9 y 32:9) */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 2200px;
+    }
+    
+    .features__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .testimonials__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Para asegurar proporción correcta en ultrawide */
+@media (min-aspect-ratio: 21/9) {
+    .hero__inner {
+        gap: var(--spacing-16);
+    }
+    
+    .hero__image {
+        max-width: 45%;
+    }
+}
+
+/* ==================== ORIENTACIÓN ==================== */
+/* Dispositivos en orientación horizontal */
+@media (orientation: landscape) and (max-height: 600px) {
+    .hero {
+        padding: var(--spacing-8) 0;
+    }
+    
+    .hero__title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero__subtitle {
+        margin-bottom: var(--spacing-4);
+    }
+}
+
+/* ==================== PANTALLAS DE ALTA DENSIDAD ==================== */
+/* Para pantallas Retina y alta densidad (Macbooks, etc) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimizaciones para pantallas de alta densidad si es necesario */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* ==================== SOPORTE DE IMPRESIÓN ==================== */
 @media print {
     .header, .footer, .cta {
         display: none;
