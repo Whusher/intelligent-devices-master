@@ -1,0 +1,506 @@
+        /* ===========================================
+           VARIABLES CSS PARA TEMAS Y ACCESIBILIDAD
+           =========================================== */
+        :root {
+            /* Tema Claro */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent-primary: #0d6efd;
+            --accent-secondary: #6610f2;
+            --border-color: #dee2e6;
+            --focus-color: #0d6efd;
+            --error-color: #dc3545;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+
+            /* Espaciado y tipografía */
+            --font-size-base: 16px;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --line-height-base: 1.5;
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 3rem;
+
+            /* Bordes y sombras */
+            --border-radius: 0.375rem;
+            --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --transition: all 0.2s ease-in-out;
+        }
+
+        /* Tema Oscuro */
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #4dabf7;
+            --accent-secondary: #9775fa;
+            --border-color: #404040;
+            --focus-color: #4dabf7;
+            --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===========================================
+           PRINCIPIO 1: PERCEPTIBLE
+           Información presentada de forma perceptible
+           =========================================== */
+
+        /* Reset y base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: var(--transition);
+        }
+
+        /* Contraste adecuado para texto (WCAG AA: 4.5:1) */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* ===========================================
+           HEADER CON NAVEGACIÓN ACCESIBLE
+           =========================================== */
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 2px solid var(--border-color);
+            padding: var(--spacing-md) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .logo {
+            font-size: var(--font-size-xl);
+            font-weight: bold;
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        /* Navegación principal */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        /* Estados de foco visibles (WCAG 2.4.7) */
+        nav a:focus,
+        nav a:hover {
+            background-color: var(--accent-primary);
+            color: white;
+            outline: 2px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        /* Indicador de página actual */
+        nav a[aria-current="page"] {
+            background-color: var(--accent-secondary);
+            color: white;
+        }
+
+        /* Botón de tema */
+        .theme-toggle {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .theme-toggle:focus,
+        .theme-toggle:hover {
+            background-color: var(--accent-secondary);
+            outline: 2px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        /* ===========================================
+           CONTENIDO PRINCIPAL
+           =========================================== */
+        main {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-xl) var(--spacing-md);
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius);
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-lg);
+            color: var(--accent-primary);
+        }
+
+        .hero p {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        /* ===========================================
+           FORMULARIOS ACCESIBLES
+           =========================================== */
+        .search-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .search-form {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-primary);
+        }
+
+        /* Campos de entrada accesibles */
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        /* Estados de foco en campos */
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--focus-color);
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+        }
+
+        /* Mensajes de error accesibles */
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .error-message::before {
+            content: "⚠️";
+            font-size: 1rem;
+        }
+
+        /* Botones accesibles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            min-height: 44px;
+            /* Tamaño mínimo táctil */
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--accent-secondary);
+            outline: 2px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        /* ===========================================
+           PRINCIPIO 2: OPERABLE
+           Componentes de interfaz operables
+           =========================================== */
+
+        /* Navegación por teclado */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--accent-primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Tarjetas de libros */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .book-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .book-card:hover,
+        .book-card:focus-within {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-title {
+            color: var(--accent-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .book-author {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .book-description {
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        /* ===========================================
+           PRINCIPIO 3: COMPRENSIBLE
+           Información y operación comprensible
+           =========================================== */
+
+        /* Breadcrumbs para navegación */
+        .breadcrumb {
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb ol {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .breadcrumb a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover,
+        .breadcrumb a:focus {
+            text-decoration: underline;
+            outline: 2px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: " > ";
+            margin-left: var(--spacing-xs);
+            color: var(--text-secondary);
+        }
+
+        /* Alertas y notificaciones */
+        .alert {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .alert-success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            border: 1px solid #badbcc;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c2c7;
+        }
+
+        /* ===========================================
+           PRINCIPIO 4: ROBUSTO
+           Contenido robusto para diferentes tecnologías
+           =========================================== */
+
+        /* Estilos para lectores de pantalla */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            /* clip: rect(0, 0, 0, 0); */
+            clip-path: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ===========================================
+           DISEÑO RESPONSIVO
+           =========================================== */
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--spacing-sm);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .hero {
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .search-form {
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* Preferencias de movimiento reducido */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Alto contraste */
+        @media (prefers-contrast: high) {
+            :root {
+                --border-color: #000000;
+                --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .btn {
+                border: 2px solid currentColor;
+            }
+        }
